@@ -187,21 +187,61 @@ let data = {
 
 //! 6.4 КОМПОНЕНТ - функція з даними на вході та розміткою на виході
 // //? ❗️❗️❗️ Ім'я функції має бути ОБОВ'ЯЗКОВО з Великої літери ❗️❗️❗️
-function Painting(props) {
-  console.log("props:",props);
+// function Painting(props) {
+//   console.log("props:",props);
+//   return (
+//     <div>
+//       <img src={props.dataObj.url} alt={props.dataObj.title} width="480" />
+//       <h2>{props.dataObj.title}</h2>
+//       <p>
+//         Автор: <a href={props.dataObj.author.url}>{props.dataObj.author.tag}</a>
+//       </p>
+//       <p>Цена:{props.dataObj.price}  кредитов</p>
+//       <p>Доступность:{props.dataObj.quantity} заканчивается или есть в наличии</p>
+//       <button type="button">Додати до кошику</button>
+//     </div>
+//   );
+// }
+
+//  const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(<Painting dataObj = {data} />)
+
+
+const painting = paintings[0]
+// const painting = paintings[1]
+// const painting = paintings[2]
+function Painting({
+    url, 
+    title, 
+    profileUrl, 
+    author, 
+    price, 
+    quantity
+  }) 
+    {
+  // const { url, title, profileUrl, author, price, quantity} = props; 
+  // console.log("props:",props);
   return (
     <div>
-      <img src={props.dataObj.url} alt={props.dataObj.title} width="480" />
-      <h2>{props.dataObj.title}</h2>
+      <img src={url} alt={title} width="480" />
+      <h2>{title}</h2>
       <p>
-        Автор: <a href={props.dataObj.author.url}>{props.dataObj.author.tag}</a>
+        Автор: <a href={profileUrl}>{author}</a>
       </p>
-      <p>Цена:{props.dataObj.price}  кредитов</p>
-      <p>Доступность:{props.dataObj.quantity} заканчивается или есть в наличии</p>
+      <p>Цена:{price}  кредитов</p>
+      <p>Доступность:{quantity} заканчивается или есть в наличии</p>
       <button type="button">Додати до кошику</button>
     </div>
   );
 }
 
  const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Painting dataObj = {data} />)
+root.render(
+  <Painting
+    url={painting.url}
+    title={painting.title}
+    author={painting.author.tag}
+    profileUrl={painting.author.url}
+    price={painting.price}
+    quantity={painting.quantity}
+  />);
