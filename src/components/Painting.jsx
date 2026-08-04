@@ -17,5 +17,6 @@ export default function Painting({
         <p>Доступность:{quantity} заканчивается или есть в наличии</p>
         <button type="button">Додати до кошику</button>
       </div>
+      
     );
 }
